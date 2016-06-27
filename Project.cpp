@@ -9,6 +9,7 @@ int edge[1000][2];
 int noofedges=0;
 int x[100],y[100];
 int triangle[1000][3];
+int nooftriangles=0;
 
 bool intersecting =false;
 int n;
@@ -108,8 +109,40 @@ for(int i=0;i<noofedges;i++)
 {
 cout<<edge[i][0]<<" "<<edge[i][1]<<endl;
 }
-
-
+for(int i=0;i<n;i++)
+{
+for(int j=0;j<i;j++)
+{
+for(int k=0;k<j;k++)
+{
+bool e1=false;
+bool e2=false;
+bool e3=false;
+for(int l=0;l<noofedges;l++)
+{
+if(edge[l][0]==i && edge[l][1]==j)
+{
+e1=true;
+}
+else if(edge[l][0]==i && edge[l][1]==k)
+{
+e2=true;
+}
+else if(edge[l][0]==j&&edge[l][1]==k)
+{
+e3=true;
+}
+}
+if(e1&&e2&&e3)
+{
+cout<<i<<" "<<j<<" "<<k<<endl;
+triangle[nooftriangles][0]=k;
+triangle[nooftriangles][1]=j;
+triangle[nooftriangles][2]=k;
+}
+}
+}
+} 
 
 
 return 0;
